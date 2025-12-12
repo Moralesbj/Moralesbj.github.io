@@ -42,14 +42,34 @@ function renderSobreMi(){
 
 const proyectos = [
     {
-        titulo:'Test Proyecto',
-        desc:'Probando la sección',
-        tech:'HTML',
-        img:'',
-        link:'https://google.com'
+        titulo:'Time Store',
+        desc:'App web de registro de tiempo y control básico.',
+        tech:'Vue, JS, Vercel',
+        img:'assets/time-store.png',  // SUBE ESTA IMAGEN
+        link:'https://time-store-lyart.vercel.app/#/'
+    },
+    {
+        titulo:'Portfolio',
+        desc:'Mi sitio web personal con diseño elegante.',
+        tech:'HTML, CSS, JS',
+        img:'assets/portfolio.png',
+        link:'https://moralesbj.github.io/'
+    },
+    {
+        titulo:'Dashboard',
+        desc:'Dashboard administrativo con UI moderna.',
+        tech:'Tailwind, JS',
+        img:'assets/dashboard.png',
+        link:'#'
+    },
+    {
+        titulo:'Landing Page',
+        desc:'Landing page optimizada para productos.',
+        tech:'CSS moderno',
+        img:'assets/landing.png',
+        link:'#'
     }
 ];
-
 
 //////////////////////////////////////////////////////
 //   🔥 RENDER PROYECTOS PROFESIONAL CON IMÁGENES
@@ -140,4 +160,3 @@ function renderContacto(){
 }
 
 loadView('sobreMi');
-
