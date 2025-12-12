@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio - Braulio Morales</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <aside id="sidebar" class="sidebar">
+            <div class="logo">BM</div>
+            <nav>
+                <ul>
+                    <li data-view="sobreMi"><i class="ri-user-3-fill"></i> Sobre mí</li>
+                    <li data-view="proyectos"><i class="ri-folder-3-fill"></i> Proyectos</li>
+                    <li data-view="habilidades"><i class="ri-bar-chart-2-fill"></i> Habilidades</li>
+                    <li data-view="contacto"><i class="ri-mail-fill"></i> Contacto</li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main>
+            <header class="topbar">
+                <input type="text" id="searchInput" placeholder="Buscar proyectos..." />
+                <i id="toggleSidebar" class="ri-menu-fill"></i>
+            </header>
+
+            <section id="content" class="content"></section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
