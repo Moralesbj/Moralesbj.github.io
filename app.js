@@ -36,36 +36,99 @@ function renderSobreMi(){
     `;
 }
 
+/////////////////////////////////////////////
+//   🔥 AQUI VAN TUS PROYECTOS (EDITABLE)
+/////////////////////////////////////////////
+
 const proyectos = [
-    {titulo:'Portfolio', desc:'Sitio web personal', tech:'HTML, CSS, JS'},
-    {titulo:'Dashboard', desc:'Panel administrativo', tech:'Tailwind, JS'},
-    {titulo:'Landing Page', desc:'Página de producto', tech:'CSS moderno'},
+    {
+        titulo:'Time Store',
+        desc:'Aplicación web desplegada en Vercel para control de tiempo y gestión básica.',
+        tech:'Vue, JS, Vercel',
+        link:'https://time-store-lyart.vercel.app/#/',   // 🔥 ENLACE A VERCEL
+        github:'https://github.com/BraulioMorales/TimeStore' // opcional
+    },
+    {
+        titulo:'Portfolio',
+        desc:'Sitio web personal.',
+        tech:'HTML, CSS, JS',
+        link:'#'
+    },
+    {
+        titulo:'Dashboard',
+        desc:'Panel administrativo moderno.',
+        tech:'Tailwind, JS',
+        link:'#'
+    },
+    {
+        titulo:'Landing Page',
+        desc:'Página de producto.',
+        tech:'CSS moderno',
+        link:'#'
+    }
 ];
 
-function renderProyectos(){
-    content.innerHTML = `<h1>Proyectos</h1><div class='grid'>${proyectos.map(p=>`
-        <div class='card project-card'>
-            <h3>${p.titulo}</h3>
-            <p>${p.desc}</p>
-            <small>${p.tech}</small><br><br>
-            <button>Ver en GitHub</button>
-        </div>
-    `).join('')}</div>`;
-}
+/////////////////////////////////////////////
+//   🔥 RENDER DE PROYECTOS
+/////////////////////////////////////////////
 
-searchInput.addEventListener('input', ()=>{
-    const term = searchInput.value.toLowerCase();
-    const filtered = proyectos.filter(p => p.titulo.toLowerCase().includes(term) || p.desc.toLowerCase().includes(term));
-    if(content.querySelector('.project-card')){
-        content.innerHTML = `<h1>Proyectos</h1><div class='grid'>${filtered.map(p=>`
+function renderProyectos(){
+    content.innerHTML = `<h1>Proyectos</h1>
+    <div class='grid'>
+        ${proyectos.map(p=>`
             <div class='card project-card'>
                 <h3>${p.titulo}</h3>
                 <p>${p.desc}</p>
-                <small>${p.tech}</small>
+                <small>${p.tech}</small><br><br>
+
+                ${p.link ? `<a href="${p.link}" target="_blank">
+                    <button>Ver Proyecto</button>
+                </a>` : ''}
+
+                ${p.github ? `<a href="${p.github}" target="_blank">
+                    <button style="margin-left:5px;">GitHub</button>
+                </a>` : ''}
             </div>
-        `).join('')}</div>`;
+        `).join('')}
+    </div>`;
+}
+
+/////////////////////////////////////////////
+//   🔍 BUSCADOR
+/////////////////////////////////////////////
+
+searchInput.addEventListener('input', ()=>{
+    const term = searchInput.value.toLowerCase();
+    const filtered = proyectos.filter(p =>
+        p.titulo.toLowerCase().includes(term) ||
+        p.desc.toLowerCase().includes(term)
+    );
+
+    if(content.querySelector('.project-card')){
+        content.innerHTML = `<h1>Proyectos</h1>
+        <div class='grid'>
+            ${filtered.map(p=>`
+                <div class='card project-card'>
+                    <h3>${p.titulo}</h3>
+                    <p>${p.desc}</p>
+                    <small>${p.tech}</small><br><br>
+
+                    ${p.link ? `<a href="${p.link}" target="_blank">
+                        <button>Ver Proyecto</button>
+                    </a>` : ''}
+
+                    ${p.github ? `<a href="${p.github}" target="_blank">
+                        <button style="margin-left:5px;">GitHub</button>
+                    </a>` : ''}
+                </div>
+            `).join('')}
+        </div>`;
     }
 });
+
+/////////////////////////////////////////////
+//   🚀 HABILIDADES Y CONTACTO
+/////////////////////////////////////////////
 
 function renderHabilidades(){
     content.innerHTML = `
