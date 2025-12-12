@@ -29,73 +29,75 @@ function renderSobreMi(){
             <br>
             <div class='grid'>
                 <div class='card'>Email: ejemplo@mail.com</div>
-                <div class='card'>GitHub: github.com/braulio</div>
+                <div class='card'>GitHub: github.com/Moralesbj</div>
                 <div class='card'>LinkedIn: linkedin.com/braulio</div>
             </div>
         </div>
     `;
 }
 
-/////////////////////////////////////////////
-//   🔥 AQUI VAN TUS PROYECTOS (EDITABLE)
-/////////////////////////////////////////////
+////////////////////////////////////////////////
+///   🔥 PROYECTOS AHORA CON MINIATURAS
+////////////////////////////////////////////////
 
 const proyectos = [
     {
         titulo:'Time Store',
-        desc:'Aplicación web desplegada en Vercel para control de tiempo y gestión básica.',
+        desc:'App web de registro de tiempo y control básico.',
         tech:'Vue, JS, Vercel',
-        link:'https://time-store-lyart.vercel.app/#/',   // 🔥 ENLACE A VERCEL
-        github:'https://github.com/BraulioMorales/TimeStore' // opcional
+        img:'assets/time-store.png',  // SUBE ESTA IMAGEN
+        link:'https://time-store-lyart.vercel.app/#/'
     },
     {
         titulo:'Portfolio',
-        desc:'Sitio web personal.',
+        desc:'Mi sitio web personal con diseño elegante.',
         tech:'HTML, CSS, JS',
-        link:'#'
+        img:'assets/portfolio.png',
+        link:'https://moralesbj.github.io/'
     },
     {
         titulo:'Dashboard',
-        desc:'Panel administrativo moderno.',
+        desc:'Dashboard administrativo con UI moderna.',
         tech:'Tailwind, JS',
+        img:'assets/dashboard.png',
         link:'#'
     },
     {
         titulo:'Landing Page',
-        desc:'Página de producto.',
+        desc:'Landing page optimizada para productos.',
         tech:'CSS moderno',
+        img:'assets/landing.png',
         link:'#'
     }
 ];
 
-/////////////////////////////////////////////
-//   🔥 RENDER DE PROYECTOS
-/////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//   🔥 RENDER PROYECTOS PROFESIONAL CON IMÁGENES
+//////////////////////////////////////////////////////
 
 function renderProyectos(){
-    content.innerHTML = `<h1>Proyectos</h1>
-    <div class='grid'>
-        ${proyectos.map(p=>`
-            <div class='card project-card'>
-                <h3>${p.titulo}</h3>
-                <p>${p.desc}</p>
-                <small>${p.tech}</small><br><br>
-
-                ${p.link ? `<a href="${p.link}" target="_blank">
-                    <button>Ver Proyecto</button>
-                </a>` : ''}
-
-                ${p.github ? `<a href="${p.github}" target="_blank">
-                    <button style="margin-left:5px;">GitHub</button>
-                </a>` : ''}
-            </div>
-        `).join('')}
-    </div>`;
+    content.innerHTML = `
+        <h1>Proyectos</h1>
+        <div class='project-grid'>
+            ${proyectos.map(p => `
+                <div class='project-card'>
+                    <img src="${p.img}" class="project-img">
+                    <h3>${p.titulo}</h3>
+                    <p>${p.desc}</p>
+                    <small>${p.tech}</small>
+                    <br><br>
+                    <a href="${p.link}" target="_blank">
+                        <button class="btn-view">Ver Proyecto</button>
+                    </a>
+                </div>
+            `).join('')}
+        </div>
+    `;
 }
 
-/////////////////////////////////////////////
-//   🔍 BUSCADOR
-/////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//   🔍 BUSCADOR (funciona con imágenes también)
+//////////////////////////////////////////////////////
 
 searchInput.addEventListener('input', ()=>{
     const term = searchInput.value.toLowerCase();
@@ -105,30 +107,29 @@ searchInput.addEventListener('input', ()=>{
     );
 
     if(content.querySelector('.project-card')){
-        content.innerHTML = `<h1>Proyectos</h1>
-        <div class='grid'>
-            ${filtered.map(p=>`
-                <div class='card project-card'>
+        content.innerHTML = `
+        <h1>Proyectos</h1>
+        <div class='project-grid'>
+            ${filtered.map(p => `
+                <div class='project-card'>
+                    <img src="${p.img}" class="project-img">
                     <h3>${p.titulo}</h3>
                     <p>${p.desc}</p>
-                    <small>${p.tech}</small><br><br>
-
-                    ${p.link ? `<a href="${p.link}" target="_blank">
-                        <button>Ver Proyecto</button>
-                    </a>` : ''}
-
-                    ${p.github ? `<a href="${p.github}" target="_blank">
-                        <button style="margin-left:5px;">GitHub</button>
-                    </a>` : ''}
+                    <small>${p.tech}</small>
+                    <br><br>
+                    <a href="${p.link}" target="_blank">
+                        <button class="btn-view">Ver Proyecto</button>
+                    </a>
                 </div>
             `).join('')}
-        </div>`;
+        </div>
+        `;
     }
 });
 
-/////////////////////////////////////////////
-//   🚀 HABILIDADES Y CONTACTO
-/////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//   RESTO DE SECCIONES
+//////////////////////////////////////////////////////
 
 function renderHabilidades(){
     content.innerHTML = `
