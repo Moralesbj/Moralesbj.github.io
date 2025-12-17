@@ -29,43 +29,107 @@ function renderSobreMi(){
             <br>
             <div class='grid'>
                 <div class='card'>Email: ejemplo@mail.com</div>
-                <div class='card'>GitHub: github.com/braulio</div>
+                <div class='card'>GitHub: github.com/Moralesbj</div>
                 <div class='card'>LinkedIn: linkedin.com/braulio</div>
             </div>
         </div>
     `;
 }
 
+////////////////////////////////////////////////
+///   🔥 PROYECTOS AHORA CON MINIATURAS
+////////////////////////////////////////////////
+
 const proyectos = [
-    {titulo:'Portfolio', desc:'Sitio web personal', tech:'HTML, CSS, JS'},
-    {titulo:'Dashboard', desc:'Panel administrativo', tech:'Tailwind, JS'},
-    {titulo:'Landing Page', desc:'Página de producto', tech:'CSS moderno'},
+    {
+        titulo:'Time Store',
+        desc:'App web de registro de tiempo y control básico.',
+        tech:'Vue, JS, Vercel',
+        img:'assets/time-store.png',  // SUBE ESTA IMAGEN
+        link:'https://time-store-lyart.vercel.app/#/'
+    },
+    {
+        titulo:'Portfolio',
+        desc:'Mi sitio web personal con diseño elegante.',
+        tech:'HTML, CSS, JS',
+        img:'assets/portfolio.png',
+        link:'https://moralesbj.github.io/'
+    },
+    {
+        titulo:'Dashboard',
+        desc:'Dashboard administrativo con UI moderna.',
+        tech:'Tailwind, JS',
+        img:'assets/dashboard.png',
+        link:'#'
+    },
+    {
+        titulo:'Landing Page',
+        desc:'Landing page optimizada para productos.',
+        tech:'CSS moderno',
+        img:'assets/landing.png',
+        link:'#'
+    }
 ];
 
+//////////////////////////////////////////////////////
+//   🔥 RENDER PROYECTOS PROFESIONAL CON IMÁGENES
+//////////////////////////////////////////////////////
+
 function renderProyectos(){
-    content.innerHTML = `<h1>Proyectos</h1><div class='grid'>${proyectos.map(p=>`
-        <div class='card project-card'>
-            <h3>${p.titulo}</h3>
-            <p>${p.desc}</p>
-            <small>${p.tech}</small><br><br>
-            <button>Ver en GitHub</button>
+    content.innerHTML = `
+        <h1>Proyectos</h1>
+        <div class='project-grid'>
+            ${proyectos.map(p => `
+                <div class='project-card'>
+                    <img src="${p.img}" class="project-img">
+                    <h3>${p.titulo}</h3>
+                    <p>${p.desc}</p>
+                    <small>${p.tech}</small>
+                    <br><br>
+                    <a href="${p.link}" target="_blank">
+                        <button class="btn-view">Ver Proyecto</button>
+                    </a>
+                </div>
+            `).join('')}
         </div>
-    `).join('')}</div>`;
+    `;
 }
+
+//////////////////////////////////////////////////////
+//   🔍 BUSCADOR (funciona con imágenes también)
+//////////////////////////////////////////////////////
 
 searchInput.addEventListener('input', ()=>{
     const term = searchInput.value.toLowerCase();
-    const filtered = proyectos.filter(p => p.titulo.toLowerCase().includes(term) || p.desc.toLowerCase().includes(term));
+    const filtered = proyectos.filter(p =>
+        p.titulo.toLowerCase().includes(term) ||
+        p.desc.toLowerCase().includes(term)
+    );
+
     if(content.querySelector('.project-card')){
-        content.innerHTML = `<h1>Proyectos</h1><div class='grid'>${filtered.map(p=>`
-            <div class='card project-card'>
-                <h3>${p.titulo}</h3>
-                <p>${p.desc}</p>
-                <small>${p.tech}</small>
-            </div>
-        `).join('')}</div>`;
+        content.innerHTML = `
+        <h1>Proyectos</h1>
+        <div class='project-grid'>
+            ${filtered.map(p => `
+                <div class='project-card'>
+                    <img src="${p.img}" class="project-img">
+                    <h3>${p.titulo}</h3>
+                    <p>${p.desc}</p>
+                    <small>${p.tech}</small>
+                    <br><br>
+                    <a href="${p.link}" target="_blank">
+                        <button class="btn-view">Ver Proyecto</button>
+                    </a>
+                </div>
+            `).join('')}
+        </div>
+        `;
     }
 });
+
+//////////////////////////////////////////////////////
+//   RESTO DE SECCIONES
+//////////////////////////////////////////////////////
 
 function renderHabilidades(){
     content.innerHTML = `

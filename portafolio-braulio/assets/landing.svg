@@ -1,0 +1,14 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800' viewBox='0 0 1200 800'>
+  <defs>
+    <linearGradient id='g4' x1='0' x2='1'>
+      <stop offset='0' stop-color='#4facfe'/>
+      <stop offset='1' stop-color='#00f2fe'/>
+    </linearGradient>
+    <style>
+      .bg{fill:url(#g4)}
+      .title{font-family:Arial, Helvetica, sans-serif;font-size:48px;fill:#fff}
+    </style>
+  </defs>
+  <rect class='bg' width='1200' height='800' rx='24'/>
+  <text x='50%' y='50%' text-anchor='middle' dominant-baseline='middle' class='title'>Landing Page</text>
+</svg>

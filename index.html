@@ -1,30 +1,103 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio - Braulio Morales</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description"
+        content="Portafolio profesional de Braulio Morales - Desarrollador Web especializado en crear experiencias digitales modernas y funcionales">
+    <meta name="keywords" content="desarrollador web, portafolio, frontend, backend, javascript, vue, react">
+    <meta name="author" content="Braulio Morales">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Braulio Morales - Desarrollador Web">
+    <meta property="og:description" content="Portafolio profesional con proyectos innovadores">
+    <meta property="og:type" content="website">
+
+    <title>Braulio Morales | Desarrollador Web</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Remix Icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
     <div class="container">
+        <!-- Sidebar Navigation -->
         <aside id="sidebar" class="sidebar">
-            <div class="logo">BM</div>
+            <div class="logo-container">
+                <div class="logo">BM</div>
+                <p class="logo-subtitle">Portfolio</p>
+            </div>
+
             <nav>
-                <ul>
-                    <li data-view="sobreMi"><i class="ri-user-3-fill"></i> Sobre mí</li>
-                    <li data-view="proyectos"><i class="ri-folder-3-fill"></i> Proyectos</li>
-                    <li data-view="habilidades"><i class="ri-bar-chart-2-fill"></i> Habilidades</li>
-                    <li data-view="contacto"><i class="ri-mail-fill"></i> Contacto</li>
+                <ul id="navList">
+                    <li data-view="sobreMi" class="active">
+                        <i class="ri-user-3-fill"></i>
+                        <span>Sobre mí</span>
+                    </li>
+                    <li data-view="proyectos">
+                        <i class="ri-folder-3-fill"></i>
+                        <span>Proyectos</span>
+                    </li>
+                    <li data-view="habilidades">
+                        <i class="ri-bar-chart-2-fill"></i>
+                        <span>Habilidades</span>
+                    </li>
+                    <li data-view="contacto">
+                        <i class="ri-mail-fill"></i>
+                        <span>Contacto</span>
+                    </li>
                 </ul>
             </nav>
+
+            <div class="sidebar-footer">
+                <div class="social-links">
+                    <a href="https://github.com/Moralesbj" target="_blank" aria-label="GitHub">
+                        <i class="ri-github-fill"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/braulio-morales-lz/" target="_blank" aria-label="LinkedIn">
+                        <i class="ri-linkedin-fill"></i>
+                    </a>
+                    <a href="moraleslariosbj@gmail.com" aria-label="Email">
+                        <i class="ri-mail-fill"></i>
+                    </a>
+                </div>
+            </div>
         </aside>
 
+        <!-- Main Content Area -->
         <main>
             <header class="topbar">
-                <input type="text" id="searchInput" placeholder="Buscar proyectos..." />
-                <i id="toggleSidebar" class="ri-menu-fill"></i>
+                <div class="search-container">
+                    <i class="ri-search-line search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="Buscar proyectos, habilidades..." />
+                </div>
+
+                <div class="topbar-actions">
+                    <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">
+                        <i class="ri-moon-fill"></i>
+                    </button>
+                    <button id="toggleSidebar" class="menu-toggle" aria-label="Toggle menu">
+                        <i class="ri-menu-fill"></i>
+                    </button>
+                </div>
             </header>
 
             <section id="content" class="content"></section>
@@ -33,4 +106,5 @@
 
     <script src="app.js"></script>
 </body>
+
 </html>
