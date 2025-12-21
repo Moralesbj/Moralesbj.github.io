@@ -178,12 +178,12 @@ const proyectos = [
         categoria: 'web'
     },
     {
-        titulo: 'Dashboard Administrativo',
+        titulo: 'Calculadora Web',
         desc: 'Panel de control administrativo con UI moderna y visualización de datos en tiempo real.',
         tech: ['React', 'Tailwind', 'Chart.js'],
-        img: 'assets/dashboard.png',
-        link: '#',
-        categoria: 'dashboard'
+        img: 'assets/Calculadoraweb.png',
+        link: 'https://moralesbj.github.io/CalculatorWeb/',
+        categoria: 'calculadora'
     },
     {
         titulo: 'Landing Page Producto',
