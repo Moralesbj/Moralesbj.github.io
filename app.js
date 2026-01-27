@@ -1,9 +1,9 @@
 // ========================================
 // 📧 EMAILJS CONFIGURATION
 // ========================================
-const PUBLIC_KEY = 'user_K9d82LsPq'; // ⚠️ Asegúrate de que esta sea tu Public Key, no el User ID.
+const PUBLIC_KEY = 'a_u9U8tzCJAhX038m';
 const SERVICE_ID = 'service_6t1040q';
-const TEMPLATE_ID = 'template_r8x91ab';
+const TEMPLATE_ID = 'template_rhv7y6o';
 
 // ========================================
 // 🎯 DOM ELEMENTS
