@@ -189,7 +189,7 @@ const proyectos = [
         titulo: 'Landing Page Producto',
         desc: 'Landing page optimizada para conversión con diseño responsive y animaciones atractivas.',
         tech: ['HTML5', 'CSS3', 'GSAP'],
-        img: 'assets/landing.png',
+        img: 'assets/landing.jpg',
         link: '#',
         categoria: 'landing'
     },
@@ -197,8 +197,8 @@ const proyectos = [
         titulo: 'E-Commerce Platform',
         desc: 'Plataforma de comercio electrónico completa con carrito de compras y pasarela de pago.',
         tech: ['Next.js', 'Stripe', 'MongoDB'],
-        img: 'assets/ecommerce.png',
-        link: '#',
+        img: 'assets/ecommerce.jpg',
+        link: 'https://moralesbj.github.io/BrandStore-web/',
         categoria: 'web'
     },
     {
@@ -455,22 +455,58 @@ function renderContacto() {
     `;
 
     // Form submission handler
+    // Form submission handler
     document.getElementById('contactForm').addEventListener('submit', (e) => {
         e.preventDefault();
+
+        // ------------------------------------------------------------------
+        // 🔑 CONFIGURACIÓN EMAILJS
+        // Sustituye estos valores por los de tu cuenta de EmailJS
+        // ------------------------------------------------------------------
+        const PUBLIC_KEY = 'TU_PUBLIC_KEY';    // Ejemplo: 'user_123456789'
+        const SERVICE_ID = 'TU_SERVICE_ID';    // Ejemplo: 'service_gmail'
+        const TEMPLATE_ID = 'TU_TEMPLATE_ID';  // Ejemplo: 'template_contact'
+        
+        // Inicializar EmailJS
+        emailjs.init(PUBLIC_KEY);
+
+        const btn = e.target.querySelector('button');
+        const originalContent = btn.innerHTML;
+        
+        // Show loading state
+        btn.innerHTML = '<span class="loading" style="width: 1rem; height: 1rem; border-width: 2px;"></span> Enviando...';
+        btn.disabled = true;
 
         const name = document.getElementById('nameInput').value;
         const email = document.getElementById('emailInput').value;
         const subject = document.getElementById('subjectInput').value;
         const message = document.getElementById('messageInput').value;
 
-        // Show success message (you can integrate with EmailJS or similar service)
-        alert(`¡Gracias ${name}! Tu mensaje ha sido enviado. Te contactaré pronto.`);
+        const templateParams = {
+            from_name: name,
+            from_email: email,
+            subject: subject,
+            message: message,
+            to_name: 'Braulio Morales'
+        };
 
-        // Reset form
-        e.target.reset();
-
-        // In production, you would send this to a backend or service like EmailJS
-        console.log({ name, email, subject, message });
+        emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
+            .then(() => {
+                alert(`¡Gracias ${name}! Tu mensaje ha sido enviado exitosamente.`);
+                e.target.reset();
+            }, (error) => {
+                alert('Hubo un error al enviar el mensaje. Por favor revisa la consola o intenta más tarde.');
+                console.error('EMAILJS FAILED...', error);
+                
+                // Fallback para cuando no se ha configurado (DEMO)
+                if (PUBLIC_KEY === 'TU_PUBLIC_KEY') {
+                    alert('⚠️ NOTA: Debes configurar tus llaves de EmailJS en el archivo app.js para que esto funcione realmente.');
+                }
+            })
+            .finally(() => {
+                btn.innerHTML = originalContent;
+                btn.disabled = false;
+            });
     });
 }
 
