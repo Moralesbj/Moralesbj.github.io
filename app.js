@@ -454,21 +454,14 @@ function renderContacto() {
         </div>
     `;
 
-    // Form submission handler
+    // Initialize EmailJS constants
+    const PUBLIC_KEY = 'user_K9d82LsPq';
+    const SERVICE_ID = 'service_6t1040q';
+    const TEMPLATE_ID = 'template_r8x91ab';
+
     // Form submission handler
     document.getElementById('contactForm').addEventListener('submit', (e) => {
         e.preventDefault();
-
-        // ------------------------------------------------------------------
-        // 🔑 CONFIGURACIÓN EMAILJS
-        // Sustituye estos valores por los de tu cuenta de EmailJS
-        // ------------------------------------------------------------------
-        const PUBLIC_KEY = 'TU_PUBLIC_KEY';    // Ejemplo: 'user_123456789'
-        const SERVICE_ID = 'TU_SERVICE_ID';    // Ejemplo: 'service_gmail'
-        const TEMPLATE_ID = 'TU_TEMPLATE_ID';  // Ejemplo: 'template_contact'
-        
-        // Inicializar EmailJS
-        emailjs.init(PUBLIC_KEY);
 
         const btn = e.target.querySelector('button');
         const originalContent = btn.innerHTML;
@@ -486,22 +479,17 @@ function renderContacto() {
             from_name: name,
             from_email: email,
             subject: subject,
-            message: message,
-            to_name: 'Braulio Morales'
+            message: message
         };
 
-        emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
+        emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
             .then(() => {
                 alert(`¡Gracias ${name}! Tu mensaje ha sido enviado exitosamente.`);
                 e.target.reset();
-            }, (error) => {
-                alert('Hubo un error al enviar el mensaje. Por favor revisa la consola o intenta más tarde.');
-                console.error('EMAILJS FAILED...', error);
-                
-                // Fallback para cuando no se ha configurado (DEMO)
-                if (PUBLIC_KEY === 'TU_PUBLIC_KEY') {
-                    alert('⚠️ NOTA: Debes configurar tus llaves de EmailJS en el archivo app.js para que esto funcione realmente.');
-                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('Hubo un error al enviar el mensaje. Intenta nuevamente.');
             })
             .finally(() => {
                 btn.innerHTML = originalContent;
