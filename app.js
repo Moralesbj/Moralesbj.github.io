@@ -1,4 +1,11 @@
 // ========================================
+// 📧 EMAILJS CONFIGURATION
+// ========================================
+const PUBLIC_KEY = 'user_K9d82LsPq'; // ⚠️ Asegúrate de que esta sea tu Public Key, no el User ID.
+const SERVICE_ID = 'service_6t1040q';
+const TEMPLATE_ID = 'template_r8x91ab';
+
+// ========================================
 // 🎯 DOM ELEMENTS
 // ========================================
 const content = document.getElementById('content');
@@ -454,11 +461,6 @@ function renderContacto() {
         </div>
     `;
 
-    // Initialize EmailJS constants
-    const PUBLIC_KEY = 'user_K9d82LsPq';
-    const SERVICE_ID = 'service_6t1040q';
-    const TEMPLATE_ID = 'template_r8x91ab';
-
     // Form submission handler
     document.getElementById('contactForm').addEventListener('submit', (e) => {
         e.preventDefault();
@@ -482,14 +484,18 @@ function renderContacto() {
             message: message
         };
 
+        // Note: PUBLIC_KEY is already initialized in init(), but we pass it here for redundancy if needed.
+        // If init() worked, we could just call emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams);
         emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
             .then(() => {
                 alert(`¡Gracias ${name}! Tu mensaje ha sido enviado exitosamente.`);
                 e.target.reset();
             })
             .catch((error) => {
-                console.error('Error:', error);
-                alert('Hubo un error al enviar el mensaje. Intenta nuevamente.');
+                console.error('EmailJS Error:', error);
+                // Try to show a more helpful message
+                const errorMsg = error.text || "Error desconocido";
+                alert(`Hubo un error al enviar el mensaje: ${errorMsg}. Revisa la consola para más detalles.`);
             })
             .finally(() => {
                 btn.innerHTML = originalContent;
@@ -502,6 +508,18 @@ function renderContacto() {
 // 🚀 INITIALIZATION
 // ========================================
 function init() {
+    // Initialize EmailJS
+    try {
+        if (typeof emailjs !== 'undefined') {
+            emailjs.init(PUBLIC_KEY);
+            console.log('EmailJS initialized correctly');
+        } else {
+            console.error('EmailJS library not loaded. Check index.html');
+        }
+    } catch (e) {
+        console.error('Error initializing EmailJS:', e);
+    }
+
     initTheme();
     loadView('sobreMi');
 
@@ -511,6 +529,7 @@ function init() {
 
 // Run on page load
 init();
+
 
 // ========================================
 // 🎨 ADDITIONAL ANIMATIONS
@@ -526,3 +545,4 @@ document.addEventListener('mousemove', (e) => {
         orb.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
     });
 });
+  
