@@ -443,20 +443,24 @@ function renderContacto() {
                 <div class="card">
                     <i class="ri-map-pin-line" style="font-size: 1.5rem; color: var(--accent-primary);"></i>
                     <h3 style="margin-top: 1rem;">Ubicación</h3>
-                    <p>Ciudad, País</p>
+                    <p>Colombia</p>
                 </div>
                 
-                <div class="card">
-                    <i class="ri-mail-line" style="font-size: 1.5rem; color: var(--accent-primary);"></i>
-                    <h3 style="margin-top: 1rem;">Email</h3>
-                    <p>ejemplo@mail.com</p>
-                </div>
+                <a href="mailto:moraleslariosbj@gmail.com" style="text-decoration: none; color: inherit;">
+                    <div class="card" style="cursor: pointer; transition: transform 0.3s ease;">
+                        <i class="ri-mail-line" style="font-size: 1.5rem; color: var(--accent-primary);"></i>
+                        <h3 style="margin-top: 1rem;">Email</h3>
+                        <p>moraleslariosbj@gmail.com</p>
+                    </div>
+                </a>
                 
-                <div class="card">
-                    <i class="ri-phone-line" style="font-size: 1.5rem; color: var(--accent-primary);"></i>
-                    <h3 style="margin-top: 1rem;">Teléfono</h3>
-                    <p>+1 (123) 456-7890</p>
-                </div>
+                <a href="https://wa.me/573024588116" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="card" style="cursor: pointer; transition: transform 0.3s ease;">
+                        <i class="ri-whatsapp-line" style="font-size: 1.5rem; color: var(--accent-primary);"></i>
+                        <h3 style="margin-top: 1rem;">WhatsApp</h3>
+                        <p>+57 302 458 8116</p>
+                    </div>
+                </a>
             </div>
         </div>
     `;
